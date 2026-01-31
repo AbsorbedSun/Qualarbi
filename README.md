@@ -505,34 +505,12 @@ in the Software without restriction...
 
 ## 👨‍💻 Autor
 
-**Totok Michael**
+**AbsorbedSun**
 
-- 📧 Email: [tmichael2@gmail.com](mailto:tmichael2@gmail.com)
+- 📧 Email: [**\*\***@gmail.com](++++++:@gmail.com)
 - 💼 LinkedIn: [tu-perfil](https://linkedin.com/in/tu-perfil)
-- 🐙 GitHub: [@tu-usuario](https://github.com/tu-usuario)
-- 🌐 Portfolio: [tu-sitio.com](https://tu-sitio.com)
-
----
-
-## 🙏 Agradecimientos
-
-- **Tailwind CSS** - Framework CSS increíble
-- **Lucide Icons** - Iconografía hermosa y gratuita
-- **MDN Web Docs** - Documentación invaluable
-- **Stack Overflow** - Comunidad de apoyo
-
----
-
-## 📞 Soporte
-
-¿Necesitas ayuda? Contáctanos:
-
-- 📧 **Email**: [tmichael2@gmail.com](mailto:tmichael2@gmail.com)
-- 💬 **Discord**: [Servidor de Qualarbi](#)
-- 📖 **Docs**: [Documentación completa](docs/DOCUMENTACION_COMPLETA.md)
-- 🐛 **Issues**: [Reportar bug](https://github.com/tu-usuario/qualarbi-web/issues)
-
----
+- 🐙 GitHub: [@AbsorbedSun](https://github.com/AbsorbedSun)
+- 🌐 Portfolio: [.......com](https://tu-sitio.com)
 
 ## 🌟 ¡Dale una Estrella!
 
@@ -542,7 +520,7 @@ Si este proyecto te fue útil, considera darle una ⭐ en GitHub. ¡Ayuda mucho!
 
 <div align="center">
 
-**Hecho con ❤️ por [Totok Michael](https://github.com/tu-usuario)**
+**Hecho con ❤️ por [AbsorbedSun y Claude](https://github.com/AbsorbedSun)**
 
 [⬆ Volver arriba](#-qualarbi-web)
 
