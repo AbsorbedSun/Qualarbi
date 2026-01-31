@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qualarbi - Sistema de gestión académica" />
+  <title>Dashboard - Qualarbi</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="../public/css/main.css" />
+  <link rel="stylesheet" href="../public/css/components.css" />
+  <link rel="stylesheet" href="../public/css/dashboard.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Animación de transición suave */
+    #main-content {
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    /* Prevenir FOUC (Flash of Unstyled Content) */
+    body {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+  <div class="flex h-screen overflow-hidden">
+    
+    <!-- ========== SIDEBAR ========== -->
+    <div id="sidebar-container"></div>
+
+    <!-- ========== MAIN CONTENT AREA ========== -->
+    <div class="flex-1 flex flex-col overflow-hidden">
+      
+      <!-- Main Content Container - El contenido se carga dinámicamente aquí -->
+      <main 
+        id="main-content" 
+        class="flex-1 overflow-y-auto p-8"
+      >
+        <!-- El contenido de cada página se inyectará aquí -->
+        <div class="flex items-center justify-center h-full">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+              <i data-lucide="loader" class="text-green-400 animate-spin" size="32"></i>
+            </div>
+            <p class="text-gray-400">Cargando...</p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ========== SCRIPTS ========== -->
+  
+  <!-- Sidebar Inject -->
+  <script src="../public/js/sidebar-inject.js"></script>
+  
+  <!-- SPA Router - Sistema de navegación sin recargas -->
+  <script src="../public/js/spa-router.js"></script>
+
+  <!-- Inicialización -->
+  <script>
+    // Marcar body como cargado
+    document.body.classList.add('loaded');
+    
+    // Inicializar iconos
+    lucide.createIcons();
+
+    // Log para desarrollo
+    console.log('✅ Qualarbi SPA inicializado');
+    console.log('📍 Ruta actual:', window.spaRouter.currentRoute);
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios - Qualarbi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../public/css/main.css">
+    <link rel="stylesheet" href="../public/css/components.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar Container -->
+        <div id="sidebar-container"></div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="bg-gray-800/30 backdrop-blur-xl border-b border-white/10 px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex-1 max-w-xl">
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size="20"></i>
+                            <input type="text" placeholder="Buscar horarios..." class="input w-full pl-12 pr-4 bg-gray-700/50 text-white border-white/10">
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 ml-6">
+                        <button class="relative p-2 rounded-full hover:bg-white/10 transition-colors">
+                            <i data-lucide="bell" size="20" class="text-gray-300"></i>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                        <div class="avatar"><span>TM</span></div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-y-auto p-8">
+                <div class="mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h1 class="text-3xl font-bold text-white mb-2">Gestión de Horarios</h1>
+                            <p class="text-gray-300">Crea y administra horarios académicos</p>
+                        </div>
+                        <button class="btn-primary">
+                            <i data-lucide="plus" size="18"></i>
+                            <span>Generar Nuevo Horario</span>
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="card bg-gray-800/50 backdrop-blur-xl">
+                            <div class="stats-card">
+                                <div class="stats-value">24</div>
+                                <div class="stats-label">Horarios Activos</div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-800/50 backdrop-blur-xl">
+                            <div class="stats-card">
+                                <div class="stats-value" style="color: #22c55e;">98%</div>
+                                <div class="stats-label">Eficiencia</div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-800/50 backdrop-blur-xl">
+                            <div class="stats-card">
+                                <div class="stats-value" style="color: #a855f7;">45</div>
+                                <div class="stats-label">Profesores Asignados</div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-800/50 backdrop-blur-xl">
+                            <div class="stats-card">
+                                <div class="stats-value" style="color: #3b82f6;">0</div>
+                                <div class="stats-label">Conflictos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Grid -->
+                <div class="card bg-gray-800/50 backdrop-blur-xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-white">Horario Semanal - Semestre 1</h2>
+                        <div class="flex gap-2">
+                            <button class="btn-outline border-green-500 text-green-400 hover:bg-green-500 hover:text-white">
+                                <i data-lucide="download" size="16"></i>
+                                <span>Exportar PDF</span>
+                            </button>
+                            <button class="btn-outline border-green-500 text-green-400 hover:bg-green-500 hover:text-white">
+                                <i data-lucide="file-spreadsheet" size="16"></i>
+                                <span>Exportar Excel</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-700/50">
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Hora</th>
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Lunes</th>
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Martes</th>
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Miércoles</th>
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Jueves</th>
+                                    <th class="border border-white/10 p-3 text-center text-gray-300 font-bold text-sm">Viernes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-white/10 p-2 text-center text-gray-300 font-medium text-sm bg-gray-700/30">08:00-09:00</td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-green-500/20 border-2 border-green-500/50 p-3 text-center hover:bg-green-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Matemáticas</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. García</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-blue-500/20 border-2 border-blue-500/50 p-3 text-center hover:bg-blue-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Física</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. López</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-purple-500/20 border-2 border-purple-500/50 p-3 text-center hover:bg-purple-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Literatura</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Martínez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-pink-500/20 border-2 border-pink-500/50 p-3 text-center hover:bg-pink-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Historia</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Sánchez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-yellow-500/20 border-2 border-yellow-500/50 p-3 text-center hover:bg-yellow-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Química</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Rodríguez</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-white/10 p-2 text-center text-gray-300 font-medium text-sm bg-gray-700/30">09:00-10:00</td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-orange-500/20 border-2 border-orange-500/50 p-3 text-center hover:bg-orange-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Inglés</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Pérez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-green-500/20 border-2 border-green-500/50 p-3 text-center hover:bg-green-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Matemáticas</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. García</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-indigo-500/20 border-2 border-indigo-500/50 p-3 text-center hover:bg-indigo-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Biología</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Torres</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-blue-500/20 border-2 border-blue-500/50 p-3 text-center hover:bg-blue-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Física</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. López</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-purple-500/20 border-2 border-purple-500/50 p-3 text-center hover:bg-purple-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Literatura</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Martínez</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-white/10 p-2 text-center text-gray-300 font-medium text-sm bg-gray-700/30">10:00-10:30</td>
+                                    <td colspan="5" class="border border-white/10 p-2 text-center">
+                                        <div class="rounded-xl bg-gray-600/30 border-2 border-gray-500/30 p-2">
+                                            <div class="text-sm font-bold text-gray-300">RECESO</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-white/10 p-2 text-center text-gray-300 font-medium text-sm bg-gray-700/30">10:30-11:30</td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-pink-500/20 border-2 border-pink-500/50 p-3 text-center hover:bg-pink-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Historia</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Sánchez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-yellow-500/20 border-2 border-yellow-500/50 p-3 text-center hover:bg-yellow-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Química</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Rodríguez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-orange-500/20 border-2 border-orange-500/50 p-3 text-center hover:bg-orange-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Inglés</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Pérez</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-green-500/20 border-2 border-green-500/50 p-3 text-center hover:bg-green-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Matemáticas</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. García</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-white/10 p-2">
+                                        <div class="rounded-xl bg-indigo-500/20 border-2 border-indigo-500/50 p-3 text-center hover:bg-indigo-500/30 transition-colors cursor-pointer">
+                                            <div class="text-sm font-bold text-white">Biología</div>
+                                            <div class="text-xs text-gray-300 mt-1">Prof. Torres</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-green-500/40 border-2 border-green-500"></div>
+                            <span class="text-sm text-gray-300">Matemáticas</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-blue-500/40 border-2 border-blue-500"></div>
+                            <span class="text-sm text-gray-300">Física</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-purple-500/40 border-2 border-purple-500"></div>
+                            <span class="text-sm text-gray-300">Literatura</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-pink-500/40 border-2 border-pink-500"></div>
+                            <span class="text-sm text-gray-300">Historia</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-yellow-500/40 border-2 border-yellow-500"></div>
+                            <span class="text-sm text-gray-300">Química</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-orange-500/40 border-2 border-orange-500"></div>
+                            <span class="text-sm text-gray-300">Inglés</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 rounded bg-indigo-500/40 border-2 border-indigo-500"></div>
+                            <span class="text-sm text-gray-300">Biología</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script src="../public/js/sidebar-inject.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

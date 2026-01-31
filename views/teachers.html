@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profesores - Qualarbi</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/components.css" />
+    <link rel="stylesheet" href="../public/css/components.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div class="flex h-screen overflow-hidden">
+      <!-- Sidebar Container -->
+      <div id="sidebar-container"></div>
+
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <!-- Top Bar -->
+        <header
+          class="bg-gray-800/30 backdrop-blur-xl border-b border-white/10 px-8 py-4"
+        >
+          <div class="flex items-center justify-between">
+            <!-- Search -->
+            <div class="flex-1 max-w-xl">
+              <div class="relative">
+                <i
+                  data-lucide="search"
+                  class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  size="20"
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Buscar profesores..."
+                  class="input w-full pl-12 pr-4 text-white"
+                  id="searchInput"
+                />
+                <div
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-gray-500 font-mono"
+                >
+                  ⌘ F
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4 ml-6">
+              <!-- Notifications -->
+              <button
+                class="relative p-2 rounded-2xl hover:bg-white/10 transition-colors"
+              >
+                <i data-lucide="bell" size="20" class="text-gray-300"></i>
+                <span
+                  class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"
+                ></span>
+              </button>
+
+              <!-- Messages -->
+              <button class="p-2 rounded-2xl hover:bg-white/10 transition-colors">
+                <i data-lucide="mail" size="20" class="text-gray-300"></i>
+              </button>
+
+              <!-- User Profile -->
+              <div class="dropdown">
+                <button class="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/10 transition-colors">
+                  <div class="avatar">
+                    <span>TM</span>
+                  </div>
+                  <div class="text-left">
+                    <div class="text-sm font-semibold text-white">Totok Michael</div>
+                    <div class="text-xs text-gray-400">Administrador</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="flex-1 overflow-y-auto p-8">
+          <!-- Header -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h1 class="text-3xl font-bold text-white mb-2" style="text-align: left;">
+                  Gestión de Profesores
+                </h1>
+                <p class="text-gray-300" style="text-align: left;">
+                  Administra la información y asignaciones de profesores
+                </p>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button class="btn-outline" onclick="exportTeachers()">
+                  <i data-lucide="download" size="18"></i>
+                  <span>Exportar</span>
+                </button>
+                <button class="btn-primary" onclick="openAddTeacherModal()">
+                  <i data-lucide="plus" size="18"></i>
+                  <span>Agregar Profesor</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+              <div class="card">
+                <div class="stats-card">
+                  <div class="stats-value">24</div>
+                  <div class="stats-label">Total Profesores</div>
+                  <div class="stats-change positive">
+                    <i data-lucide="trending-up" size="16"></i>
+                    <span>+3% vs mes anterior</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="stats-card">
+                  <div class="stats-value" style="color: #22c55e;">21</div>
+                  <div class="stats-label">Activos</div>
+                  <div class="flex justify-center">
+                    <span class="badge badge-success">87.5%</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="stats-card">
+                  <div class="stats-value" style="color: #a855f7;">156</div>
+                  <div class="stats-label">Horas Totales</div>
+                  <div class="stats-change positive">
+                    <i data-lucide="trending-up" size="16"></i>
+                    <span>+12 horas</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="stats-card">
+                  <div class="stats-value" style="color: #3b82f6;">42</div>
+                  <div class="stats-label">Materias Asignadas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="card mb-6">
+            <div class="flex flex-wrap items-center gap-4">
+              <div class="flex-1 min-w-[200px]">
+                <label class="label">Departamento</label>
+                <select class="select">
+                  <option value="">Todos los departamentos</option>
+                  <option value="matematicas">Matemáticas</option>
+                  <option value="ciencias">Ciencias</option>
+                  <option value="humanidades">Humanidades</option>
+                  <option value="idiomas">Idiomas</option>
+                </select>
+              </div>
+
+              <div class="flex-1 min-w-[200px]">
+                <label class="label">Estado</label>
+                <select class="select">
+                  <option value="">Todos</option>
+                  <option value="activo">Activo</option>
+                  <option value="inactivo">Inactivo</option>
+                  <option value="licencia">En Licencia</option>
+                </select>
+              </div>
+
+              <div class="flex-1 min-w-[200px]">
+                <label class="label">Tipo de Contrato</label>
+                <select class="select">
+                  <option value="">Todos</option>
+                  <option value="tiempo-completo">Tiempo Completo</option>
+                  <option value="medio-tiempo">Medio Tiempo</option>
+                  <option value="por-horas">Por Horas</option>
+                </select>
+              </div>
+
+              <div class="pt-6">
+                <button class="btn-ghost" onclick="resetFilters()">
+                  <i data-lucide="x" size="18"></i>
+                  <span>Limpiar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teachers Table -->
+          <div class="card">
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Profesor</th>
+                    <th>Departamento</th>
+                    <th>Materias</th>
+                    <th>Horas/Semana</th>
+                    <th>Contrato</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="teachersTableBody">
+                  <!-- Los datos se cargarán dinámicamente -->
+                  <tr>
+                    <td>
+                      <div class="flex items-center gap-3 justify-center">
+                        <div class="avatar">JG</div>
+                        <div style="text-align: left;">
+                          <div class="font-semibold text-white">Juan García</div>
+                          <div class="text-sm text-gray-400">juan.garcia@school.com</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="badge badge-info">Matemáticas</span>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">4 materias</div>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">18 hrs</div>
+                    </td>
+                    <td>
+                      <span class="text-gray-300">Tiempo Completo</span>
+                    </td>
+                    <td>
+                      <span class="badge badge-success">Activo</span>
+                    </td>
+                    <td>
+                      <div class="flex justify-center gap-2">
+                        <button class="icon-btn" onclick="viewTeacher(1)" title="Ver detalles">
+                          <i data-lucide="eye" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="editTeacher(1)" title="Editar">
+                          <i data-lucide="edit" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="deleteTeacher(1)" title="Eliminar">
+                          <i data-lucide="trash-2" size="16"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="flex items-center gap-3 justify-center">
+                        <div class="avatar" style="background: linear-gradient(135deg, #a855f7, #c084fc);">ML</div>
+                        <div style="text-align: left;">
+                          <div class="font-semibold text-white">María López</div>
+                          <div class="text-sm text-gray-400">maria.lopez@school.com</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="badge badge-warning">Ciencias</span>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">3 materias</div>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">15 hrs</div>
+                    </td>
+                    <td>
+                      <span class="text-gray-300">Tiempo Completo</span>
+                    </td>
+                    <td>
+                      <span class="badge badge-success">Activo</span>
+                    </td>
+                    <td>
+                      <div class="flex justify-center gap-2">
+                        <button class="icon-btn" onclick="viewTeacher(2)">
+                          <i data-lucide="eye" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="editTeacher(2)">
+                          <i data-lucide="edit" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="deleteTeacher(2)">
+                          <i data-lucide="trash-2" size="16"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="flex items-center gap-3 justify-center">
+                        <div class="avatar" style="background: linear-gradient(135deg, #f97316, #fb923c);">CR</div>
+                        <div style="text-align: left;">
+                          <div class="font-semibold text-white">Carlos Rodríguez</div>
+                          <div class="text-sm text-gray-400">carlos.rodriguez@school.com</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="badge" style="background: rgba(236, 72, 153, 0.15); color: #ec4899; border-color: rgba(236, 72, 153, 0.3);">Humanidades</span>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">5 materias</div>
+                    </td>
+                    <td>
+                      <div class="text-white font-medium">20 hrs</div>
+                    </td>
+                    <td>
+                      <span class="text-gray-300">Tiempo Completo</span>
+                    </td>
+                    <td>
+                      <span class="badge badge-success">Activo</span>
+                    </td>
+                    <td>
+                      <div class="flex justify-center gap-2">
+                        <button class="icon-btn" onclick="viewTeacher(3)">
+                          <i data-lucide="eye" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="editTeacher(3)">
+                          <i data-lucide="edit" size="16"></i>
+                        </button>
+                        <button class="icon-btn" onclick="deleteTeacher(3)">
+                          <i data-lucide="trash-2" size="16"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination mt-6">
+              <button class="pagination-btn" disabled>
+                <i data-lucide="chevron-left" size="16"></i>
+              </button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn">
+                <i data-lucide="chevron-right" size="16"></i>
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal: Agregar/Editar Profesor -->
+    <div id="teacherModal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-bold text-white" style="text-align: left;">Agregar Profesor</h2>
+          <button onclick="closeTeacherModal()" class="icon-btn">
+            <i data-lucide="x" size="20"></i>
+          </button>
+        </div>
+
+        <form id="teacherForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="label">Nombre</label>
+              <input type="text" class="input" placeholder="Ej: Juan" required />
+            </div>
+
+            <div class="form-group">
+              <label class="label">Apellido</label>
+              <input type="text" class="input" placeholder="Ej: García" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Correo Electrónico</label>
+            <input type="email" class="input" placeholder="profesor@escuela.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="label">Teléfono</label>
+            <input type="tel" class="input" placeholder="+52 555 123 4567" />
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="label">Departamento</label>
+              <select class="select" required>
+                <option value="">Seleccionar...</option>
+                <option value="matematicas">Matemáticas</option>
+                <option value="ciencias">Ciencias</option>
+                <option value="humanidades">Humanidades</option>
+                <option value="idiomas">Idiomas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="label">Tipo de Contrato</label>
+              <select class="select" required>
+                <option value="">Seleccionar...</option>
+                <option value="tiempo-completo">Tiempo Completo</option>
+                <option value="medio-tiempo">Medio Tiempo</option>
+                <option value="por-horas">Por Horas</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="label">Horas Semanales Máximas</label>
+            <input type="number" class="input" placeholder="40" min="1" max="40" />
+          </div>
+
+          <div class="flex gap-4 pt-4">
+            <button type="button" class="btn-ghost flex-1" onclick="closeTeacherModal()">
+              Cancelar
+            </button>
+            <button type="submit" class="btn-primary flex-1">
+              Guardar Profesor
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Inicializar iconos de Lucide
+      lucide.createIcons();
+
+      // Funciones del modal
+      function openAddTeacherModal() {
+        document.getElementById('teacherModal').style.display = 'flex';
+        setTimeout(() => lucide.createIcons(), 100);
+      }
+
+      function closeTeacherModal() {
+        document.getElementById('teacherModal').style.display = 'none';
+      }
+
+      // Funciones de la tabla
+      function viewTeacher(id) {
+        alert(`Ver detalles del profesor ${id}`);
+      }
+
+      function editTeacher(id) {
+        openAddTeacherModal();
+        // Aquí cargarías los datos del profesor
+      }
+
+      function deleteTeacher(id) {
+        if (confirm('¿Estás seguro de que deseas eliminar este profesor?')) {
+          alert(`Profesor ${id} eliminado`);
+        }
+      }
+
+      function exportTeachers() {
+        alert('Exportando lista de profesores...');
+      }
+
+      function resetFilters() {
+        document.querySelectorAll('.select').forEach(select => {
+          select.value = '';
+        });
+      }
+
+      // Búsqueda en tiempo real
+      document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        // Aquí implementarías la lógica de búsqueda
+        console.log('Buscando:', searchTerm);
+      });
+
+      // Cerrar modal al hacer clic fuera
+      document.getElementById('teacherModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          closeTeacherModal();
+        }
+      });
+
+      // Manejar envío del formulario
+      document.getElementById('teacherForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Profesor guardado exitosamente');
+        closeTeacherModal();
+      });
+    </script>
+      <script src="../public/js/sidebar-inject.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

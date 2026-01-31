@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Qualarbi - Sistema inteligente de generación de horarios escolares"
+    />
+    <title>Qualarbi - Generador Inteligente de Horarios</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/components.css" />
+
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <!-- Navegación -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-800/80 backdrop-blur-xl border-b border-white/10">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="calendar-check" class="text-white" size="24"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-gradient">Qualarbi</h1>
+          </div>
+
+          <!-- Navegación Desktop -->
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#features"
+              class="text-gray-300 hover:text-white transition-colors font-medium"
+              >Características</a
+            >
+            <a
+              href="#benefits"
+              class="text-gray-300 hover:text-white transition-colors font-medium"
+              >Beneficios</a
+            >
+            <a
+              href="#about"
+              class="text-gray-300 hover:text-white transition-colors font-medium"
+              >Acerca de</a
+            >
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="flex items-center gap-4">
+            <a href="login.html" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
+              >Iniciar Sesión</a
+            >
+            <a href="register.html" class="inline-flex items-center justify-center px-5 py-2 rounded-full text-white bg-green-500/90 ring-2 ring-green-400/50 hover:bg-green-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/30">Comenzar Gratis</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden"
+    >
+      <!-- Efectos de fondo animados -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          class="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl animate-pulse"
+          style="animation-duration: 4s;"
+        ></div>
+        <div
+          class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"
+          style="animation-duration: 6s; animation-delay: 1s;"
+        ></div>
+      </div>
+
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Contenido -->
+          <div class="space-y-8 animate-fade-in">
+            <div
+              class="inline-block px-4 py-2 rounded-full bg-green-500/10 backdrop-blur-sm border border-green-500/30 text-green-400 text-sm font-medium shadow-md"
+            >
+              🚀 Optimiza tu gestión académica
+            </div>
+
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight text-white">
+              Genera Horarios
+              <span class="text-gradient block mt-2">Perfectos</span>
+              en Segundos
+            </h1>
+
+            <p class="text-xl text-gray-300 leading-relaxed">
+              Olvídate de las horas perdidas organizando horarios manualmente.
+              Qualarbi usa algoritmos inteligentes para crear horarios óptimos
+              considerando todas las restricciones y preferencias.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-4">
+              <a href="register.html" class="inline-flex items-center justify-center px-8 py-4 text-lg rounded-full text-white bg-green-500/90 ring-2 ring-green-400/50 hover:bg-green-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/30">
+                <i data-lucide="rocket" size="20" class="mr-2"></i>
+                Comenzar Ahora
+              </a>
+              <a href="#features" class="inline-flex items-center justify-center px-8 py-4 text-lg rounded-full text-white border-2 border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300">
+                <i data-lucide="play-circle" size="20" class="mr-2"></i>
+                Ver Demo
+              </a>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-green-400">95%</div>
+                <div class="text-sm text-gray-400 font-medium">Tiempo Ahorrado</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-green-400">10K+</div>
+                <div class="text-sm text-gray-400 font-medium">Horarios Creados</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-green-400">500+</div>
+                <div class="text-sm text-gray-400 font-medium">Instituciones</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualización del Dashboard -->
+          <div class="relative hidden lg:block animate-scale-in">
+            <div class="card p-8 space-y-6 bg-gray-800/50 backdrop-blur-xl">
+              <!-- Mini dashboard preview -->
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold text-white">Panel de Control</h3>
+                <div
+                  class="w-3 h-3 rounded-full bg-green-500 animate-pulse shadow-lg"
+                ></div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="card-primary p-4 text-center">
+                  <div class="text-3xl font-bold mb-2 text-white">24</div>
+                  <div class="text-sm text-gray-300 font-medium">Horarios Activos</div>
+                </div>
+                <div class="card-secondary p-4 text-center">
+                  <div class="text-3xl font-bold mb-2 text-white">12</div>
+                  <div class="text-sm text-gray-300 font-medium">Profesores</div>
+                </div>
+              </div>
+
+              <!-- Mini schedule grid -->
+              <div class="space-y-2">
+                <div class="flex gap-2">
+                  <div
+                    class="flex-1 h-12 bg-green-500/20 rounded-xl border-2 border-green-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Matemáticas
+                  </div>
+                  <div
+                    class="flex-1 h-12 bg-purple-500/20 rounded-xl border-2 border-purple-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Física
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <div
+                    class="flex-1 h-12 bg-blue-500/20 rounded-xl border-2 border-blue-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Literatura
+                  </div>
+                  <div
+                    class="flex-1 h-12 bg-pink-500/20 rounded-xl border-2 border-pink-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Historia
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <div
+                    class="flex-1 h-12 bg-yellow-500/20 rounded-xl border-2 border-yellow-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Química
+                  </div>
+                  <div
+                    class="flex-1 h-12 bg-orange-500/20 rounded-xl border-2 border-orange-500/30 flex items-center justify-center text-xs text-white font-medium shadow-md"
+                  >
+                    Inglés
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-2">
+                <button class="flex-1 btn-primary py-2 text-sm inline-flex items-center justify-center gap-2">
+                  <i data-lucide="refresh-cw" size="16"></i>
+                  Generar
+                </button>
+                <button class="flex-1 btn-outline py-2 text-sm border-green-500 text-green-400 hover:bg-green-500 hover:text-white inline-flex items-center justify-center gap-2">
+                  <i data-lucide="download" size="16"></i>
+                  Exportar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-16 animate-fade-in">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-4 text-white">
+            Características <span class="text-gradient">Poderosas</span>
+          </h2>
+          <p class="text-xl text-gray-300">
+            Todo lo que necesitas para gestionar horarios perfectos
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="zap" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Generación Automática</h3>
+            <p class="text-gray-300">
+              Algoritmos inteligentes que crean horarios óptimos en segundos,
+              considerando todas las restricciones y preferencias.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="users" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Gestión de Profesores</h3>
+            <p class="text-gray-300">
+              Administra profesores, sus horarios disponibles, materias y
+              preferencias de manera centralizada.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="book-open" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Control de Materias</h3>
+            <p class="text-gray-300">
+              Organiza materias, asigna créditos, define requisitos y establece
+              relaciones entre asignaturas.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-pink-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="clock" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Restricciones Flexibles</h3>
+            <p class="text-gray-300">
+              Define periodos de descanso, bloques de tiempo, y restricciones
+              personalizadas para cada caso.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="bar-chart-3" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Analytics Avanzados</h3>
+            <p class="text-gray-300">
+              Visualiza métricas, estadísticas y reportes detallados sobre la
+              utilización de recursos.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div
+            class="card hover:scale-105 transition-transform duration-300 space-y-4 bg-gray-800/50 backdrop-blur-xl flex flex-col items-center text-center p-6"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center shadow-lg"
+            >
+              <i data-lucide="download" class="text-white" size="28"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-white">Exportación Múltiple</h3>
+            <p class="text-gray-300">
+              Exporta horarios en PDF, Excel, o imprímelos directamente con
+              diseños profesionales.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section
+      id="benefits"
+      class="py-20 px-6 bg-gradient-to-b from-transparent to-gray-900"
+    >
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <h2 class="text-4xl lg:text-5xl font-bold text-white">
+              ¿Por qué elegir <span class="text-gradient">Qualarbi</span>?
+            </h2>
+
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center flex-shrink-0 shadow-md"
+                >
+                  <i data-lucide="check" class="text-green-400" size="24"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-2 text-white">
+                    Ahorra Tiempo Valioso
+                  </h4>
+                  <p class="text-gray-300">
+                    Lo que antes tomaba días, ahora toma segundos. Dedica tu
+                    tiempo a lo que realmente importa.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center flex-shrink-0 shadow-md"
+                >
+                  <i data-lucide="check" class="text-green-400" size="24"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-2 text-white">Sin Conflictos</h4>
+                  <p class="text-gray-300">
+                    Nuestro algoritmo garantiza horarios sin traslapes ni
+                    conflictos, optimizando recursos.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center flex-shrink-0 shadow-md"
+                >
+                  <i data-lucide="check" class="text-green-400" size="24"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-2 text-white">Fácil de Usar</h4>
+                  <p class="text-gray-300">
+                    Interfaz intuitiva diseñada para que cualquiera pueda usarla
+                    sin capacitación previa.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex gap-4">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center flex-shrink-0 shadow-md"
+                >
+                  <i data-lucide="check" class="text-green-400" size="24"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-2 text-white">Soporte Dedicado</h4>
+                  <p class="text-gray-300">
+                    Equipo de soporte disponible para ayudarte en cada paso del
+                    camino.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a href="register.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full text-white bg-green-500/90 ring-2 ring-green-400/50 hover:bg-green-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/30">
+              Probar Gratis por 30 Días
+              <i data-lucide="arrow-right" size="20" class="ml-2"></i>
+            </a>
+          </div>
+
+          <div class="relative">
+            <div class="card p-8 space-y-6 bg-gray-800/50 backdrop-blur-xl">
+              <div class="text-center space-y-2">
+                <div class="text-5xl font-bold text-gradient">3.5 seg</div>
+                <p class="text-gray-300 font-medium">Tiempo promedio de generación</p>
+              </div>
+
+              <div
+                class="h-px bg-gradient-to-r from-transparent via-green-500 to-transparent"
+              ></div>
+
+              <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-medium">Complejidad:</span>
+                  <span class="font-semibold text-white">Alta</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-medium">Profesores:</span>
+                  <span class="font-semibold text-white">45</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-medium">Materias:</span>
+                  <span class="font-semibold text-white">120</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-300 font-medium">Restricciones:</span>
+                  <span class="font-semibold text-white">250+</span>
+                </div>
+              </div>
+
+              <div class="pt-4">
+                <div class="w-full bg-gray-700 rounded-full h-4">
+                  <div
+                    class="bg-gradient-to-r from-green-500 to-green-600 h-4 rounded-full shadow-lg"
+                    style="width: 98%"
+                  ></div>
+                </div>
+                <p class="text-center text-sm text-gray-300 mt-2 font-medium">
+                  98% de eficiencia
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto max-w-4xl">
+        <div class="card-primary p-12 text-center space-y-8">
+          <h2 class="text-4xl lg:text-5xl font-bold text-white">
+            ¿Listo para revolucionar tu gestión de horarios?
+          </h2>
+          <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+            Únete a cientos de instituciones que ya confían en Qualarbi para
+            optimizar su planificación académica.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="register.html" class="inline-flex items-center justify-center px-8 py-4 text-lg rounded-full text-white bg-green-500/90 ring-2 ring-green-400/50 hover:bg-green-500 hover:scale-105 transition-all duration-300 shadow-lg shadow-green-500/30">
+              Comenzar Gratis
+              <i data-lucide="arrow-right" size="20" class="ml-2"></i>
+            </a>
+            <a
+              href="login.html"
+              class="inline-flex items-center justify-center px-8 py-4 text-lg rounded-full border-2 border-white text-white hover:bg-white hover:text-green-600 transition-all duration-300"
+            >
+              Ya tengo cuenta
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/10">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-2xl bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center shadow-lg"
+              >
+                <i
+                  data-lucide="calendar-check"
+                  class="text-white"
+                  size="24"
+                ></i>
+              </div>
+              <h3 class="text-xl font-bold text-gradient">Qualarbi</h3>
+            </div>
+            <p class="text-gray-400 text-sm">
+              Optimizando la gestión académica con inteligencia artificial.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4 text-white">Producto</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a href="#features" class="hover:text-white transition-colors"
+                  >Características</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Precios</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Demo</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4 text-white">Empresa</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Acerca de</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Contacto</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-4 text-white">Legal</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Privacidad</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Términos</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Cookies</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white/10 mt-12 pt-8 text-center text-gray-400 text-sm"
+        >
+          <p>&copy; 2026 Qualarbi. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Inicializar iconos Lucide -->
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

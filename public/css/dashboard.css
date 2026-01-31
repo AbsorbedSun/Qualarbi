@@ -1,0 +1,253 @@
+/* ==================== DASHBOARD DARK THEME OVERRIDES ==================== */
+
+/* Asegurar que todos los fondos de cards usen tema oscuro */
+.card,
+.card-primary,
+.card-secondary {
+  background: rgba(30, 41, 59, 0.5) !important;
+  backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
+}
+
+.card-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(22, 163, 74, 0.15) 0%,
+    rgba(22, 163, 74, 0.05) 100%
+  ) !important;
+  border-color: rgba(22, 163, 74, 0.3) !important;
+}
+
+/* Asegurar que todos los títulos sean blancos */
+h1, h2, h3, h4, h5, h6 {
+  color: #f1f5f9 !important;
+}
+
+/* Asegurar que los textos principales sean claros */
+.text-primary,
+.font-semibold,
+.font-bold {
+  color: #f1f5f9 !important;
+}
+
+/* Textos secundarios */
+.text-secondary,
+.text-gray-300 {
+  color: #cbd5e1 !important;
+}
+
+.text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Asegurar que los badges sean visibles */
+.badge-success {
+  background: rgba(34, 197, 94, 0.2) !important;
+  color: #4ade80 !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+.badge-warning {
+  background: rgba(234, 179, 8, 0.2) !important;
+  color: #facc15 !important;
+  border-color: rgba(234, 179, 8, 0.4) !important;
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.2) !important;
+  color: #f87171 !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Asegurar que los botones tengan el estilo correcto */
+.btn-primary {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%) !important;
+  color: white !important;
+}
+
+.btn-outline {
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  color: #cbd5e1 !important;
+  background: transparent !important;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #16a34a !important;
+  color: #4ade80 !important;
+}
+
+/* Inputs en modo oscuro */
+.input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: rgba(51, 65, 85, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
+}
+
+.input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Nav links */
+.nav-link {
+  color: #cbd5e1 !important;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%) !important;
+  color: white !important;
+}
+
+/* Tablas */
+.table {
+  color: #f1f5f9 !important;
+}
+
+.table thead {
+  background: rgba(51, 65, 85, 0.5) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.table th {
+  color: #f1f5f9 !important;
+}
+
+.table td {
+  color: #cbd5e1 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Modales */
+.modal-content {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+  background: #1e293b !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dropdown-item {
+  color: #cbd5e1 !important;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
+}
+
+/* SVG círculos de progreso */
+circle.text-dark-700,
+circle.text-primary-500 {
+  stroke: currentColor !important;
+}
+
+/* Asegurar que no haya fondos blancos */
+* {
+  /* Eliminar cualquier fondo blanco accidental */
+}
+
+*[style*="background: white"],
+*[style*="background: #fff"],
+*[style*="background: #ffffff"],
+*[style*="background-color: white"],
+*[style*="background-color: #fff"],
+*[style*="background-color: #ffffff"] {
+  background: transparent !important;
+}
+
+/* Scrollbar en modo oscuro */
+::-webkit-scrollbar-track {
+  background: #334155 !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #16a34a, #15803d) !important;
+  border-color: #334155 !important;
+}
+
+/* Pagination */
+.pagination-btn {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgba(51, 65, 85, 0.8) !important;
+  border-color: #16a34a !important;
+  color: #4ade80 !important;
+}
+
+.pagination-btn.active {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+  color: white !important;
+}
+
+/* Toggle slider */
+.toggle-slider:before {
+  background-color: #f1f5f9 !important;
+}
+
+/* Avatar border */
+.avatar {
+  border-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Empty state */
+.empty-state-title {
+  color: #f1f5f9 !important;
+}
+
+.empty-state-description {
+  color: #cbd5e1 !important;
+}
+
+/* Stats labels */
+.stats-label {
+  color: #cbd5e1 !important;
+}
+
+/* File upload */
+.file-upload {
+  background: rgba(51, 65, 85, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.file-upload:hover {
+  background: rgba(22, 163, 74, 0.1) !important;
+  border-color: #16a34a !important;
+}
+
+/* Tooltip */
+.tooltip-text {
+  background-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
